@@ -13,6 +13,7 @@
       <input id="user-password" class="auth-form__input" type="password">
       <label for="user-password" class="auth-form__label">Пароль</label>
     </div>
+    <button class="btn btn--submit">Зарегистрироваться</button>
   </form>
 </template>
 

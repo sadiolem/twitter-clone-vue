@@ -100,7 +100,6 @@
     .btn-registration,
     .btn-login {
       width: 380px;
-      font-weight: 600;
     }
 
     .btn-registration {

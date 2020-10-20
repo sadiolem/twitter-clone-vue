@@ -37,12 +37,18 @@ export default {
     height: 39px;
     padding: 0 15px;
     font-size: 16px;
+    font-weight: 600;
     background: none;
     border: 1px solid transparent;
     border-radius: 50px;
     cursor: pointer;
     outline: none;
     transition: 0.3s background-color;
+
+    &--submit {
+      color: #fff;
+      background-color: @main-color;
+    }
   }
 
   input {

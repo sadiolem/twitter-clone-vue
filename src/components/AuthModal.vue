@@ -46,8 +46,6 @@
     top: 50%;
     z-index: 1;
     width: 600px;
-    height: 650px;
-    min-height: 400px;
     background-color: #fff;
     border-radius: 15px;
     transform: translate(-50%, -50%);
@@ -84,6 +82,10 @@
           color: @main-color;
         }
       }
+    }
+
+    .btn {
+      margin-bottom: 15px;
     }
   }
 </style>
