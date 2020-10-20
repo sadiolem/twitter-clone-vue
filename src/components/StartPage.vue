@@ -18,23 +18,43 @@
     </div>
     <div class="start-page__right-block">
       <h1>Twitter Clone</h1>
-      <button class="btn btn-registration">Зарегистрироваться</button>
-      <button class="btn btn-login">Войти</button>
+      <button @click="openRegistrationModal" class="btn btn-registration">Зарегистрироваться</button>
+      <button @click="openLoginModal" class="btn btn-login">Войти</button>
+      <AuthModal ref="authModal" :content="content"/>
     </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'StartPage'
-}
+  import AuthModal from "@/components/AuthModal";
+
+  export default {
+    name: 'StartPage',
+    components: {
+      AuthModal
+    },
+    data() {
+      return {
+        content: '',
+      }
+    },
+    methods: {
+      openRegistrationModal() {
+        this.content = 'registration';
+        this.$refs.authModal.toggleModalVisibility();
+      },
+      openLoginModal() {
+        this.content = 'login';
+        this.$refs.authModal.toggleModalVisibility();
+      }
+    }
+  }
 </script>
 
 <style lang="less">
   .start-page {
     display: flex;
     height: 100%;
-    font-weight: 600;
 
     &__left-block,
     &__right-block {
@@ -47,6 +67,7 @@ export default {
     &__left-block {
       color: #fff;
       font-size: 24px;
+      font-weight: 600;
       background-color: @main-color;
     }
 
@@ -74,18 +95,6 @@ export default {
 
     &__right-block {
       flex-direction: column;
-    }
-
-    .btn {
-      height: 39px;
-      padding: 0 15px;
-      font-size: 16px;
-      background: none;
-      border: 1px solid transparent;
-      border-radius: 50px;
-      cursor: pointer;
-      outline: none;
-      transition: 0.3s background-color;
     }
 
     .btn-registration,
