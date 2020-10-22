@@ -72,10 +72,6 @@
     }
 
     .features-list {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-
       &__item {
         display: flex;
         align-items: center;
@@ -95,6 +91,10 @@
 
     &__right-block {
       flex-direction: column;
+
+      h1 {
+        color: @text-color;
+      }
     }
 
     .btn-registration,

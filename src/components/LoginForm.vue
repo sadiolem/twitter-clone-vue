@@ -9,13 +9,18 @@
       <input id="user-password" class="auth-form__input" type="password">
       <label for="user-password" class="auth-form__label">Пароль</label>
     </div>
-    <button class="btn btn--submit">Войти</button>
+    <button class="btn btn--submit" @click="routeToHomePage">Войти</button>
   </form>
 </template>
 
 <script>
   export default {
-    name: 'AuthForm.vue'
+    name: 'AuthForm.vue',
+    methods: {
+      routeToHomePage() {
+        this.$router.push('home');
+      }
+    }
   }
 </script>
 
