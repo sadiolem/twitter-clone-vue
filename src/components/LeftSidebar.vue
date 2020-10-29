@@ -11,10 +11,10 @@
                 class="left-sidebar__navigation-list-item"
                 :class="{ 'left-sidebar__navigation-list-item--active': item.isActive }"
                 v-for="item in navItems"
-                :key="item"
+                :key="item.id"
             >
               <a href="">
-                <img :src="`${item.icon}`" alt="">
+                <img :src="`../assets/svg/${item.icon}.svg`" alt="">
                 <span>{{ item.title }}</span>
               </a>
             </li>
@@ -33,14 +33,13 @@
     data() {
       return {
         navItems: [
-          { title: 'Главная', icon: 123, isActive: true },
-          { title: 'Поиск', icon: 123, isActive: false  },
-          { title: 'Уведомления', icon: 123, isActive: false  },
-          { title: 'Сообщения', icon: 123, isActive: false  },
-          { title: 'Закладки', icon: 123, isActive: false  },
-          { title: 'Списки', icon: 123, isActive: false  },
-          { title: 'Профиль', icon: 123, isActive: false  },
-          { title: 'Еще', icon: 123, isActive: false  },
+          { id: 1, title: 'Главная', icon: 'home', isActive: true },
+          { id: 2, title: 'Поиск', icon: 'search', isActive: false  },
+          { id: 3, title: 'Уведомления', icon: 'notifications', isActive: false  },
+          { id: 4, title: 'Сообщения', icon: 'main-outline', isActive: false  },
+          { id: 5, title: 'Закладки', icon: 'bookmark', isActive: false  },
+          { id: 6, title: 'Списки', icon: 'list_alt', isActive: false  },
+          { id: 7, title: 'Профиль', icon: 'person', isActive: false  },
         ]
       }
     }
@@ -67,12 +66,18 @@
         font-weight: 600;
 
         a {
-          display: block;
+          display: flex;
+          align-items: center;
           width: fit-content;
           padding: 10px;
           color: @text-color;
           border-radius: 50px;
-          transition: 0.3s background-color;
+          transition: color 0.3s, background-color 0.3s;
+
+          & > img {
+            width: 26px;
+            height: 26px;
+          }
 
           & > span {
             margin: 0 20px;
