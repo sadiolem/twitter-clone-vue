@@ -13,6 +13,14 @@
 <script>
   export default {
     name: 'TwitForm',
+    data() {
+      return {
+        twit: {
+          user: '',
+          text: '',
+        },
+      }
+    },
     methods: {
       heightByContent(el) {
         el.style.height = el.scrollHeight + 'px';
@@ -22,7 +30,7 @@
         }
       },
       addTwit() {
-        console.log(111);
+
       }
     }
   }

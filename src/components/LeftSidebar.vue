@@ -1,5 +1,6 @@
 <template>
   <div class="left-sidebar">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><symbol viewBox="0 0 24 24" id="chat_outline"><path d="M0 0h24v24H0V0z" fill="none" /><path fill="#fff" d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z" /></symbol><symbol viewBox="0 0 24 24" id="people_outline"><path d="M0 0h24v24H0z" fill="none" /><path fill="#fff" d="M16.5 13c-1.2 0-3.07.34-4.5 1-1.43-.67-3.3-1-4.5-1C5.33 13 1 14.08 1 16.25V19h22v-2.75c0-2.17-4.33-3.25-6.5-3.25zm-4 4.5h-10v-1.25c0-.54 2.56-1.75 5-1.75s5 1.21 5 1.75v1.25zm9 0H14v-1.25c0-.46-.2-.86-.52-1.22.88-.3 1.96-.53 3.02-.53 2.44 0 5 1.21 5 1.75v1.25zM7.5 12c1.93 0 3.5-1.57 3.5-3.5S9.43 5 7.5 5 4 6.57 4 8.5 5.57 12 7.5 12zm0-5.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 5.5c1.93 0 3.5-1.57 3.5-3.5S18.43 5 16.5 5 13 6.57 13 8.5s1.57 3.5 3.5 3.5zm0-5.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z" /></symbol><symbol viewBox="0 0 24 24" id="search"><path d="M0 0h24v24H0z" fill="none" /><path fill="#fff" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" /></symbol></defs></svg>
     <div>
       <div class="left-sidebar__logo-block">
         logo
@@ -14,7 +15,9 @@
                 :key="item.id"
             >
               <a href="">
-                <img :src="`../assets/svg/${item.icon}.svg`" alt="">
+                <svg>
+                  <use :xlink:href="`#${item.icon}`"/>
+                </svg>
                 <span>{{ item.title }}</span>
               </a>
             </li>
@@ -59,6 +62,8 @@
     }
 
     &__navigation-list {
+      background: #333;
+
       &-item {
         width: 255px;
         padding: 7px 0;
@@ -74,9 +79,13 @@
           border-radius: 50px;
           transition: color 0.3s, background-color 0.3s;
 
-          & > img {
+          & > svg {
             width: 26px;
             height: 26px;
+
+            path {
+              fill: @main-color;
+            }
           }
 
           & > span {
