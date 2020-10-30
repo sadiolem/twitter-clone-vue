@@ -5,7 +5,7 @@
     </div>
     <div class="twit-form__input-block">
       <label>
-        <textarea ref="textareaInput" maxlength="280" placeholder="Что происходит?" @input="heightByContent($event.target)"></textarea>
+        <textarea ref="textareaInput" maxlength="280" placeholder="Что происходит?" @input="heightByContent"></textarea>
       </label>
       <button class="btn twit-form__btn-submit" @click.prevent="addTwit" :disabled="isFormInvalid">Твитнуть</button>
     </div>
@@ -21,7 +21,8 @@
       }
     },
     methods: {
-      heightByContent(el) {
+      heightByContent() {
+        const el = this.$refs.textareaInput;
         el.style.height = el.scrollHeight + 'px';
 
         if (!el.value) {
