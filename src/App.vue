@@ -45,6 +45,10 @@ export default {
       color: #fff;
       background-color: @main-color;
     }
+
+    &:disabled {
+      opacity: 0.5;
+    }
   }
 
   input {

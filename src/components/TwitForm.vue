@@ -4,8 +4,10 @@
       <img src="../assets/default_profile.png" alt="">
     </div>
     <div class="twit-form__input-block">
-      <textarea maxlength="280" placeholder="Что происходит?" @input="heightByContent($event.target)"></textarea>
-      <button class="btn twit-form__btn-submit" @click.prevent="addTwit">Твитнуть</button>
+      <label>
+        <textarea ref="textareaInput" maxlength="280" placeholder="Что происходит?" @input="heightByContent($event.target)"></textarea>
+      </label>
+      <button class="btn twit-form__btn-submit" @click.prevent="addTwit" :disabled="isFormInvalid">Твитнуть</button>
     </div>
   </form>
 </template>
@@ -15,10 +17,7 @@
     name: 'TwitForm',
     data() {
       return {
-        twit: {
-          user: '',
-          text: '',
-        },
+        isFormInvalid: true,
       }
     },
     methods: {
@@ -28,9 +27,14 @@
         if (!el.value) {
           el.removeAttribute('style');
         }
+
+        this.checkValidation(el);
+      },
+      checkValidation(el) {
+        this.isFormInvalid = !el.value || el.value.length === el.maxLength;
       },
       addTwit() {
-
+         console.log('add twit');
       }
     }
   }
@@ -79,7 +83,7 @@
 
     &__btn-submit {
       align-self: flex-end;
-      margin: 10px 0;
+      margin-top: 10px;
       color: #fff;
       background-color: @main-color;
     }
