@@ -5,9 +5,21 @@
     </div>
     <div class="twit-form__input-block">
       <label>
-        <textarea ref="textareaInput" maxlength="280" placeholder="Что происходит?" @input="heightByContent"></textarea>
+        <textarea
+            ref="twitInput"
+            maxlength="280"
+            placeholder="Что происходит?"
+            @input="inputHandler($event.target)"
+        >
+        </textarea>
       </label>
-      <button class="btn twit-form__btn-submit" @click.prevent="addTwit" :disabled="isFormInvalid">Твитнуть</button>
+      <button
+          class="btn twit-form__btn-submit"
+          @click.prevent="addTwit"
+          :disabled="isFormInvalid"
+      >
+        Твитнуть
+      </button>
     </div>
   </form>
 </template>
@@ -21,21 +33,22 @@
       }
     },
     methods: {
-      heightByContent() {
-        const el = this.$refs.textareaInput;
+      inputHandler(el) {
+        this.heightByContent(el);
+        this.checkValidation(el);
+      },
+      heightByContent(el) {
         el.style.height = el.scrollHeight + 'px';
 
         if (!el.value) {
           el.removeAttribute('style');
         }
-
-        this.checkValidation(el);
       },
       checkValidation(el) {
         this.isFormInvalid = !el.value || el.value.length === el.maxLength;
       },
       addTwit() {
-         console.log('add twit');
+         alert('add twit');
       }
     }
   }
