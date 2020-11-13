@@ -11,7 +11,7 @@ export default {
   name: 'App',
   mounted() {
     axios
-        .get('')
+        .get('http://twitter-clone/api/')
         .then(response => (console.log(response)));
   }
 }
