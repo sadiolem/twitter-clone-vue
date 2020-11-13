@@ -5,9 +5,15 @@
 </template>
 
 <script>
+import axios from 'axios';
 
 export default {
   name: 'App',
+  mounted() {
+    axios
+        .get('')
+        .then(response => (console.log(response)));
+  }
 }
 </script>
 
